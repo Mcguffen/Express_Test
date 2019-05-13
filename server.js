@@ -2,6 +2,9 @@ const express = require("express")
 
 const app = express()
 
+// 使用express.json()方法
+app.use(express.json())
+
 // 引入mongoose 他是链接操作数据库的驱动
 const mongoose = require('mongoose')
 // 链接数据库,第一个参数是要链接的数据库地址,它的好处就是即使没有这个express_test数据库他会帮你创建，有的话直接链接很方便，第二个参数必须填写，新版本要求。
@@ -71,7 +74,9 @@ app.get('/products/:id', async function(req,res){
 
 // 提交数据 
 app.post('/products', async function(req, res){
-    const data = {}
+    // 接收客服端发来的数据，还需要对这个数据进行解析，我们用exoress,json()方法对json数据解析。
+    const data = req.body
+    console.log(data)
     res.send(data)
 })
 app.listen(3000, () => {

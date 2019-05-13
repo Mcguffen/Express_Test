@@ -58,16 +58,17 @@ app.get('/products', async function(req,res){
 })
 
 // 产品详情页
-// 我们的'/products/:'中的“ ：”表示的任意字符,我们在后边加id是为了捕获这个这个任意字符而取的名字你可以使用任何变量代替id来捕获这个任意字符。
+// 我们的'/products/:' 中的 “ ：” 表示的任意字符,我们在后边加id是为了捕获这个这个任意字符而取的名字你可以使用任何变量代替id来捕获这个任意字符。
 app.get('/products/:id', async function(req,res){
     // 代替之前写死的数据 每次的从数据库查询数据都是异步操作所以使用await 那么这个函数必须加上async他俩是成对出现使用的。
     // 所以skip和limit结合起来是可以用来作分页的。
     // sort方法用来排序的_id = -1 是按照逆序排的 当然1就是正序排列
     // findById这个方法的参数 就是从前端url地址捕获的任意字符（用id变量储存），又因为他是从客户端发来的参数所以用req.parms.id req.parms就是从客户端（浏览器）发来的所有参数，又因为我们用id来存这个字符所以。。。
-    const data = await Product.findById(req.parms.id)
+    // 而且返回的是个对象 不是数组
+    const data = await Product.findById(req.params.id)
     res.send(data)
 })
 
-app.listen(3000, ()=> {
+app.listen(3000, () => {
     console.log('app listening on port 3000!')
 })

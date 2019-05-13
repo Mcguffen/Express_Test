@@ -76,8 +76,10 @@ app.get('/products/:id', async function(req,res){
 app.post('/products', async function(req, res){
     // 接收客服端发来的数据，还需要对这个数据进行解析，我们用exoress,json()方法对json数据解析。
     const data = req.body
-    console.log(data)
-    res.send(data)
+    //接收到了客户端发来的数据，我们就存到我们的数据库中
+    const product = await Product.create(data)
+    
+    res.send(product)
 })
 app.listen(3000, () => {
     console.log('app listening on port 3000!')

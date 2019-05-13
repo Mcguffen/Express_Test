@@ -8,7 +8,11 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/express_test',{
     useNewUrlParser: true
 })
+// 定义数据模型 第一个参数是模型名字一般我们大写，第二个参数是数据的表结构，他的参数是哥对象来定义数据的属性。
+const product = mongoose.model('Product', new mongoose.Schema({
+    titile: String,
 
+}))
 // 引入cors来解决跨域问题,他相当于一个中间件。
 app.use(require('cors')())
 

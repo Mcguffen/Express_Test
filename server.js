@@ -35,21 +35,9 @@ app.get('/about', function(req,res){
     )
 })
 
-app.get('/products', function(req,res){
-    res.send([
-        {
-            id: '1',
-            titile: '产品1'
-        },
-        {
-            id: '2',
-            titile: '产品2'
-        },
-        {
-            id: '3',
-            titile: '产品3'
-        },
-    ])
+app.get('/products', async function(req,res){
+    // 代替之前写死的数据 每次的从数据库查询数据都是异步操作所以使用await 那么这个函数必须加上async他俩是成对出现使用的。
+    res.send(await Product.find())
 })
 
 app.listen(3000, ()=> {

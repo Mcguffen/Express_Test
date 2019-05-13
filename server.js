@@ -48,11 +48,22 @@ app.get('/about', function(req,res){
     )
 })
 
+// 产品列表页
 app.get('/products', async function(req,res){
     // 代替之前写死的数据 每次的从数据库查询数据都是异步操作所以使用await 那么这个函数必须加上async他俩是成对出现使用的。
     // 所以skip和limit结合起来是可以用来作分页的。
     // sort方法用来排序的_id = -1 是按照逆序排的 当然1就是正序排列
     const data = await Product.find().sort({_id: -1})
+    res.send(data)
+})
+
+// 产品详情页
+// 我们的'/products/:'中的“ ：”表示的任意字符,我们在后边加id是为了捕获这个这个任意字符而取的名字你可以使用任何变量代替id来捕获这个任意字符。
+app.get('/products/:id', async function(req,res){
+    // 代替之前写死的数据 每次的从数据库查询数据都是异步操作所以使用await 那么这个函数必须加上async他俩是成对出现使用的。
+    // 所以skip和limit结合起来是可以用来作分页的。
+    // sort方法用来排序的_id = -1 是按照逆序排的 当然1就是正序排列
+    const data = await Product.findOne()
     res.send(data)
 })
 

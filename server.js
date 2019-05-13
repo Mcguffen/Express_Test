@@ -50,6 +50,7 @@ app.get('/about', function(req,res){
 
 app.get('/products', async function(req,res){
     // 代替之前写死的数据 每次的从数据库查询数据都是异步操作所以使用await 那么这个函数必须加上async他俩是成对出现使用的。
+    //所以skip和limit结合起来是可以用来作分页的。
     const data = await Product.find().skip(1).limit(2)
     res.send(data)
 })

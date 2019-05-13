@@ -2,6 +2,9 @@ const express = require("express")
 
 const app = express()
 
+// 静态文件托管 所有public 文件下的文件都可以被访问
+app.use('/static', express.static('public'))
+
 app.get('/', function(req,res){
     res.send(
         {

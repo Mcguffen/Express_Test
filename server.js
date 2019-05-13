@@ -9,10 +9,22 @@ mongoose.connect('mongodb://localhost:27017/express_test',{
     useNewUrlParser: true
 })
 // 定义数据模型 第一个参数是模型名字一般我们大写，第二个参数是数据的表结构，他的参数是哥对象来定义数据的属性。
-const product = mongoose.model('Product', new mongoose.Schema({
+const Product = mongoose.model('Product', new mongoose.Schema({
     titile: String,
 
 }))
+// 插入一条数据来测试
+Product.insertMany([
+    {
+        titile: '产品1',
+    },
+    {
+        titile: '产品2',
+    },
+    {
+        titile: '产品3',
+    },
+])
 // 引入cors来解决跨域问题,他相当于一个中间件。
 app.use(require('cors')())
 

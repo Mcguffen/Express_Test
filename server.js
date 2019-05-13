@@ -69,6 +69,11 @@ app.get('/products/:id', async function(req,res){
     res.send(data)
 })
 
+// 提交数据 
+app.post('/products', async function(req, res){
+    const data = {}
+    res.send(data)
+})
 app.listen(3000, () => {
     console.log('app listening on port 3000!')
 })

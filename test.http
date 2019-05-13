@@ -14,3 +14,7 @@ Content-Type: application/json
 {
     "titile": "产品5"
 }
+
+###
+
+DELETE {{url}}products/5cd91592be1be353f5f246af

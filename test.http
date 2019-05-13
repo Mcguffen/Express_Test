@@ -12,9 +12,18 @@ POST {{url}}products
 Content-Type: application/json
 
 {
-    "titile": "产品5"
+    "title": "产品5"
 }
 
 ###
 
-DELETE {{url}}products/5cd91592be1be353f5f246af
+DELETE {{url}}products/5cd920adfe540c58b56caece
+
+###
+
+PUT {{url}}products/5cd921d45cd61558e0257539
+Content-Type: application/json
+
+{
+    "title": "产品5 修改后"
+}

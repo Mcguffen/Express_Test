@@ -9,3 +9,8 @@ GET {{url}}products/5cd8ff675136aa4af4a9d013
 ###
 
 POST {{url}}products
+Conten-Type: applicaton/json
+
+{
+    "titile": "产品4"
+}
